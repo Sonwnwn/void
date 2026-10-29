@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VOID — кино за пределами обыденного</title><link rel="stylesheet" href="style.css"><script type="module" src="main.js"></script></head>
+<body>
+<header><a class="logo" href="#">VOID<span>®</span></a><span class="tag">НЕЗАВИСИМЫЙ КИНОТЕАТР</span><nav aria-label="Основная навигация"><a href="#cinema">Пространство ↗</a><a href="#booking">Сеансы ↗</a><a href="#tickets">Мои билеты <span id="ticket-count">0</span></a></nav></header>
+<main>
+<section class="hero"><canvas id="hero-canvas" aria-hidden="true"></canvas><div class="hero-top"><span>БОЛЬШОЙ ЭКРАН. ПОЛНОЕ ПОГРУЖЕНИЕ.</span><span>24 МЕСТА / ОДИН ЗАЛ</span></div><h1>ВЫКЛЮЧИ МИР.<br><span>ВКЛЮЧИ КИНО.</span></h1><div class="hero-bottom"><p>Место, где гаснет свет<br>и начинается что-то большее.</p><a class="pill" href="#booking">Выбрать сеанс <span>↘</span></a><span class="edition">VOID CINEMA<br>ЗА ПРЕДЕЛАМИ ОБЫДЕННОГО</span></div></section>
+
+<section id="cinema" class="section cinema-section" aria-label="Фотографии кинотеатра">
+<div class="section-title"><span>(01) ВНУТРИ VOID</span><h2>МЕСТО,<br>ГДЕ ГАСНЕТ МИР.</h2></div>
+<div class="cinema-carousel" role="region" aria-roledescription="карусель" aria-label="Наш кинотеатр">
+<div class="carousel-stage" id="carousel-stage">
+<button class="cinema-slide" type="button" data-slide="0" aria-label="Фото 1: Свет афиш"><img src="images/cinema-1.jpg" alt="Свет афиш" loading="lazy"><span>Свет афиш</span></button>
+<button class="cinema-slide" type="button" data-slide="1" aria-label="Фото 2: Перед началом фильма"><img src="images/cinema-8.jpg" alt="Перед началом фильма" loading="lazy"><span>Перед началом фильма</span></button>
+<button class="cinema-slide" type="button" data-slide="2" aria-label="Фото 3: Игра отражений"><img src="images/cinema-3.jpg" alt="Игра отражений" loading="lazy"><span>Игра отражений</span></button>
+<button class="cinema-slide" type="button" data-slide="3" aria-label="Фото 4: Световая инсталляция"><img src="images/cinema-11.jpg" alt="Световая инсталляция" loading="lazy"><span>Световая инсталляция</span></button>
+<button class="cinema-slide" type="button" data-slide="4" aria-label="Фото 5: Гардероб"><img src="images/cinema-6.jpg" alt="Гардероб" loading="lazy"><span>Гардероб</span></button>
+<button class="cinema-slide" type="button" data-slide="5" aria-label="Фото 6: Бар перед сеансом"><img src="images/cinema-4.jpg" alt="Бар перед сеансом" loading="lazy"><span>Бар перед сеансом</span></button>
+<button class="cinema-slide" type="button" data-slide="6" aria-label="Фото 7: Большой экран"><img src="images/cinema-9.jpg" alt="Большой экран" loading="lazy"><span>Большой экран</span></button>
+<button class="cinema-slide" type="button" data-slide="7" aria-label="Фото 8: Коридор в кино"><img src="images/cinema-5.jpg" alt="Коридор в кино" loading="lazy"><span>Коридор в кино</span></button>
+<button class="cinema-slide" type="button" data-slide="8" aria-label="Фото 9: Пространство VOID"><img src="images/cinema-12.jpg" alt="Пространство VOID" loading="lazy"><span>Пространство VOID</span></button>
+<button class="cinema-slide" type="button" data-slide="9" aria-label="Фото 10: Красный зал"><img src="images/cinema-7.jpg" alt="Красный зал" loading="lazy"><span>Красный зал</span></button>
+<button class="cinema-slide" type="button" data-slide="10" aria-label="Фото 11: Тишина перед сеансом"><img src="images/cinema-10.jpg" alt="Тишина перед сеансом" loading="lazy"><span>Тишина перед сеансом</span></button>
+</div><div class="carousel-controls"><button id="gallery-prev" type="button" aria-label="Предыдущее фото">←</button><p id="gallery-counter" role="status" aria-live="polite">01 / 05</p><button id="gallery-next" type="button" aria-label="Следующее фото">→</button></div></div></section>
+<section id="booking" class="section"><div class="section-title"><span>(02) АФИША И БИЛЕТЫ</span><h2>ТВОЙ ВЕЧЕР.<br>ТВОЁ МЕСТО.</h2></div>
+<div class="filters"><label>Мест нужно не меньше<input id="guests" type="number" min="1" max="24" step="1" value="1" aria-describedby="filter-error"></label><label>Максимальная цена билета, ₽<input id="max-price" type="number" min="0" step="1" placeholder="Любая" aria-describedby="filter-error"></label><button id="reset-filters" class="text-button" type="button">Сбросить фильтры ↗</button><p id="filter-error" class="error"></p></div>
+<div id="sessions" class="sessions" aria-label="Сеансы"></div><p id="notice" role="status" aria-live="polite"></p>
+<div class="booking-grid"><div class="hall"><div class="hall-heading"><h3>Малый зал</h3><span>4 РЯДА × 6 МЕСТ</span></div><div class="screen">ЭКРАН</div><div id="seats" class="seats" aria-label="Выбор мест"></div><div class="legend"><span><i></i>Свободно</span><span><i class="chosen"></i>Выбрано</span><span><i class="busy"></i>Занято</span></div></div>
+<aside class="summary"><span class="eyebrow">ТВОЙ БИЛЕТ / VOID</span><h3 id="film-title">Выберите сеанс</h3><p id="film-meta"></p><p id="film-description"></p><form id="booking-form" novalidate><div class="receipt"><span>Выбранные места</span><strong id="selected-seats">Пока не выбраны</strong></div><div class="total"><span>Итого</span><strong id="total">0 ₽</strong></div><p id="form-error" class="error" role="alert"></p><button id="confirm" class="primary" type="submit">Подтвердить билет ↗</button></form></aside></div></section>
+<section id="tickets" class="section ticket-section"><div class="section-title"><span>(03) СОХРАНИ СВОЙ ВЕЧЕР</span><h2>МОИ БИЛЕТЫ<span class="dot">.</span></h2></div><div id="ticket-list"></div><button id="clear-tickets" type="button" class="text-button">Сбросить все мои билеты ↗</button></section>
+<section class="manifest"><span>БЕЗ ЛИШНЕГО ШУМА.</span><p>ТОЛЬКО ТЫ.<br>И ХОРОШЕЕ КИНО.</p><a href="#booking">Увидимся в зале ↗</a></section>
+</main><footer><a class="logo" href="#">VOID®</a><p>Кино за пределами обыденного.</p><span>VOID CINEMA / 2026</span></footer>
+</body></html>
